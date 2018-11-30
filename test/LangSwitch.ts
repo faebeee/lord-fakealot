@@ -7,6 +7,7 @@ export default interface LangSwitch {
     /**
      * Type definition
      * @faker lorem.word
+     * @minimum 5
      * @TJS-faker lorem.word
      */
     type: string;
