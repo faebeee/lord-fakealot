@@ -1,0 +1,25 @@
+{
+    "imports": [
+        "./controllers.json"
+    ],
+    "services": {
+        "service.server": {
+            "file": "../src/Server.js",
+            "arguments": [
+                "%port%",
+                "%host%"
+            ]
+        },
+        "service.jsonschemaloader": {
+            "file": "../src/api/json/SchemaLoader.js",
+            "arguments": [
+                "%interfaceSourceDir%"
+            ]
+        },
+        "service.jsondatacreator": {
+            "file": "../src/api/json/DataCreator.js",
+            "arguments": [
+            ]
+        }
+    }
+}

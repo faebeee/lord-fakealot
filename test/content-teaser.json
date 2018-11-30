@@ -1,0 +1,8 @@
+[
+    {
+        "title": "{{lorem.words}}",
+        "content": "{{lorem.sentences}}",
+        "label": "{{lorem.word}}",
+        "image": "https://source.unsplash.com/random/260x260"
+    }
+]

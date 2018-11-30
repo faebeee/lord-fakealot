@@ -1,0 +1,11 @@
+{
+    "services": {
+        "controller.json.schema": {
+            "file": "../src/api/json/Controller.js",
+            "arguments": [
+                "@service.jsonschemaloader",
+                "@service.jsondatacreator"
+            ]
+        }
+    }
+}
