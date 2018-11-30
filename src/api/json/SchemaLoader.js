@@ -1,12 +1,12 @@
 const getFiles = require('../../util/getFiles');
-const {basename} = require( 'path');
+const {basename, join} = require( 'path');
 
 module.exports = class JsonSchemaLoader {
     constructor(sourceDir) {
         this.sourceDir = sourceDir;
         this.index = {};
         
-        getFiles(this.sourceDir)
+        getFiles(join(this.sourceDir, '**/*.json'))
             .then( (files) => {
                 this.files = files;
                 this.files.forEach((file) => {

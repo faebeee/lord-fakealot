@@ -18,6 +18,14 @@ container.get('service.server').start();
 const jsonSchemaController = container.get('controller.json.schema');
 container.get('service.server').route({
     method: 'GET',
-    path: '/api/schema/{interface}',
+    path: '/api/json/schema/{interface}',
     handler: jsonSchemaController.getData.bind(jsonSchemaController)
+});
+
+
+const tsSchemaController = container.get('controller.ts.schema');
+container.get('service.server').route({
+    method: 'GET',
+    path: '/api/ts/schema/{interface}',
+    handler: tsSchemaController.getData.bind(tsSchemaController)
 });

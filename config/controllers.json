@@ -6,6 +6,13 @@
                 "@service.jsonschemaloader",
                 "@service.jsondatacreator"
             ]
+        },
+        "controller.ts.schema": {
+            "file": "../src/api/ts/Controller.js",
+            "arguments": [
+                "@service.tsschemaloader",
+                "@service.tsdatacreator"
+            ]
         }
     }
 }

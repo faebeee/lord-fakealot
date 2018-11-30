@@ -20,6 +20,17 @@
             "file": "../src/api/json/DataCreator.js",
             "arguments": [
             ]
+        },
+
+        "service.tsschemaloader": {
+            "file": "../src/api/ts/SchemaLoader.js",
+            "arguments": [
+                "%interfaceSourceDir%"
+            ]
+        },
+        "service.tsdatacreator": {
+            "file": "../src/api/ts/DataCreator.js",
+            "arguments": []
         }
     }
 }
