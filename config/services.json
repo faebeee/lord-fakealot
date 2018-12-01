@@ -2,6 +2,11 @@
     "imports": [
         "./controllers.json"
     ],
+    "parameters": {
+        "fakerseed": 123,
+        "port": 1337,
+        "host": "localhost"
+    },
     "services": {
         "service.server": {
             "file": "../src/Server.js",
@@ -10,27 +15,29 @@
                 "%host%"
             ]
         },
-        "service.jsonschemaloader": {
-            "file": "../src/api/json/SchemaLoader.js",
+        "service.datafilegenerator": {
+            "file": "../src/DataFileGenerator.js",
             "arguments": [
-                "%interfaceSourceDir%"
+                "%interfaceSourceDir%",
+                "@service.tsschemaloader",
+                "@service.tsdatagenerator",
+                "@service.schemadatawriter"
             ]
         },
-        "service.jsondatacreator": {
-            "file": "../src/api/json/DataCreator.js",
-            "arguments": [
-            ]
-        },
-
         "service.tsschemaloader": {
-            "file": "../src/api/ts/SchemaLoader.js",
+            "file": "../src/typescript/SchemaLoader.js",
             "arguments": [
                 "%interfaceSourceDir%"
             ]
         },
-        "service.tsdatacreator": {
-            "file": "../src/api/ts/DataCreator.js",
-            "arguments": []
+        "service.tsdatagenerator": {
+            "file": "../src/typescript/DataGenerator.js",
+            "arguments": [
+                "%fakerseed%"
+            ]
+        },
+        "service.schemadatawriter": {
+            "file": "../src/SchemaDataWriter.js"
         }
     }
 }

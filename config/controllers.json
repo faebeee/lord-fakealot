@@ -1,17 +1,10 @@
 {
     "services": {
-        "controller.json.schema": {
-            "file": "../src/api/json/Controller.js",
-            "arguments": [
-                "@service.jsonschemaloader",
-                "@service.jsondatacreator"
-            ]
-        },
         "controller.ts.schema": {
             "file": "../src/api/ts/Controller.js",
             "arguments": [
                 "@service.tsschemaloader",
-                "@service.tsdatacreator"
+                "@service.tsdatagenerator"
             ]
         }
     }

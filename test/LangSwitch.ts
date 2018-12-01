@@ -1,16 +1,17 @@
-import 'reflect-metadata';
-import custom from '../src/decorators/Decorators';
-
 export default interface LangSwitch {
-    languages: ILink[];
+    /**
+     * Type definition
+     * @faker lorem.paragraph
+     */
+    type: string;
 
     /**
      * Type definition
-     * @faker lorem.word
-     * @minimum 5
-     * @TJS-faker lorem.word
+     * @pattern yes|no
      */
-    type: string;
+    isActive: string;
+    
+    languages: ILink[];
 }
 
 export interface ILink {

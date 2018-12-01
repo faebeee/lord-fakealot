@@ -1,11 +1,12 @@
 const glob = require('glob');
+const {join} = require('path');
 
 
 const GLOB_SETTINGS = {
     ignore: ['**/node_modules/**'],
 };
 
-module.exports = function getFiles(searchPath) {
+function getFiles(searchPath) {
     return new Promise((res, rej) => {
         glob(searchPath, GLOB_SETTINGS, (err, files) => {
             if (err) {
@@ -15,3 +16,12 @@ module.exports = function getFiles(searchPath) {
         });
     });
 }
+
+function getTypescriptFiles(sourcePath) {
+    return getFiles(join(sourcePath, '**/*.ts'));
+}
+
+module.exports = {
+    getFiles,
+    getTypescriptFiles
+};

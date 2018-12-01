@@ -2,15 +2,17 @@
     "name": "lord-fakealot",
     "version": "1.0.0",
     "description": "",
-    "main": "index.js",
+    "main": "server.js",
     "bin": {
-        "fakealot": "./index.js"
+        "fakealot": "index.js",
+        "fakealot-api": "server.js"
     },
     "directories": {
         "example": "example"
     },
     "dependencies": {
         "faker": "^4.1.0",
+        "fs-extra": "^7.0.1",
         "glob": "^7.1.3",
         "hapi": "^17.8.1",
         "hapi-cors-headers": "^1.0.3",
@@ -25,7 +27,8 @@
         "nodemon": "^1.18.7"
     },
     "scripts": {
-        "dev": "npx nodemon ./index.js --port 8080 --root './test'"
+        "server-dev": "npx nodemon ./server.js --port 8080 --root './test'",
+        "generator-dev": "npx nodemon ./index.js --root './test' --out './out/data.json'"
     },
     "author": "",
     "license": "ISC"
