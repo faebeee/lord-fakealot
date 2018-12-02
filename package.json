@@ -2,7 +2,16 @@
     "name": "lord-fakealot",
     "version": "0.5.0",
     "description": "Generate Mockdata for your app",
-    "keywords": ["mock", "faker", "json", "schema", "interfaces", "typescript", "api", "http"],
+    "keywords": [
+        "mock",
+        "faker",
+        "json",
+        "schema",
+        "interfaces",
+        "typescript",
+        "api",
+        "http"
+    ],
     "main": "server.js",
     "bin": {
         "fakealot": "index.js"
@@ -30,6 +39,14 @@
     "engines": {
         "node": ">=10"
     },
+    "files": [
+        "./config",
+        "./src",
+        "boot.js",
+        "generator.js",
+        "index.js",
+        "server.js"
+    ],
     "author": "faebeee",
     "license": "ISC"
 }
