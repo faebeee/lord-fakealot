@@ -1,0 +1,32 @@
+{
+    "root": true,
+    "parser": "babel-eslint",
+    "extends": "@dreipol/eslint-config",
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "no-return-await": ["off"],
+        "class-methods-use-this": ["off"],
+        
+        "camelcase": [
+            "error",
+            {
+                "properties": "never"
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "*.spec.js"
+            ],
+            "rules": {
+                "no-unused-expressions": "off",
+                "max-nested-callbacks": "off"
+            }
+        }
+    ]
+}

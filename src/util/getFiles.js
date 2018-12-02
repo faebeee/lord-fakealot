@@ -1,13 +1,12 @@
 const glob = require('glob');
-const {join} = require('path');
-
+const { join } = require('path');
 
 const GLOB_SETTINGS = {
     ignore: ['**/node_modules/**'],
 };
 
 /**
- *
+ * Get all files matching glob pattern
  * @param {string} searchPath
  * @return {Promise<string[]>}
  */
@@ -23,8 +22,8 @@ function getFiles(searchPath) {
 }
 
 /**
- * Get all typescriptfiles
- * @param sourcePath
+ * Get all typescript files
+ * @param {string} sourcePath
  * @return {Promise<string[]>}
  */
 function getTypescriptFiles(sourcePath) {
@@ -33,5 +32,5 @@ function getTypescriptFiles(sourcePath) {
 
 module.exports = {
     getFiles,
-    getTypescriptFiles
+    getTypescriptFiles,
 };

@@ -1,6 +1,6 @@
 class SchemaController {
     /**
-     *
+     * SchemaController
      * @param {SchemaLoader} tsSchemaLoader
      * @param {DataGenerator} tsDataCreator
      */
@@ -11,7 +11,7 @@ class SchemaController {
 
     /**
      * Handle incoming requests
-     * @param req
+     * @param {hapi.Request} req
      * @return {Promise<*>}
      */
     async getData(req) {

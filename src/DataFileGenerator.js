@@ -3,7 +3,7 @@ const getInterfaceNameFromFile = require('./util/getInterfaceNameFromFile');
 
 class DataFileGenerator {
     /**
-     *
+     * DataFileGenerator
      * @param {string} sourceDir
      * @param {SchemaLoader} schemaLoader
      * @param {DataGenerator} dataGenerator
@@ -36,7 +36,7 @@ class DataFileGenerator {
 
     /**
      * Generate fakedata json files
-     * @param {string} out directory or file where to store the data
+     * @param {string} outDir directory or file where to store the data
      * @return {Promise<void>}
      */
     async generateFiles(outDir) {
@@ -45,8 +45,8 @@ class DataFileGenerator {
     }
 
     /**
-     *
-     * @param outFile
+     * Generate fake data json file
+     * @param {string} outFile Destination file
      * @return {Promise<void>}
      */
     async generateFile(outFile) {

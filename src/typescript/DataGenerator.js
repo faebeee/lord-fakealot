@@ -1,12 +1,13 @@
+const faker = require('faker');
 const jsf = require('json-schema-faker');
 
 class DataGenerator {
     /**
+     * DataGenerator
      * @param {number} fakerSeed
      */
     constructor(fakerSeed) {
         jsf.extend('faker', () => {
-            const faker = require('faker');
             faker.seed(fakerSeed);
             return faker;
         });

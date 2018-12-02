@@ -17,6 +17,7 @@
         "fakealot": "index.js"
     },
     "dependencies": {
+        "eslint": "^5.9.0",
         "faker": "^4.1.0",
         "fs-extra": "^7.0.1",
         "glob": "^7.1.3",
@@ -27,13 +28,16 @@
         "yargs": "^12.0.5"
     },
     "devDependencies": {
+        "@dreipol/eslint-config": "^6.0.2",
+        "babel-eslint": "^10.0.1",
         "chai": "^4.2.0",
         "mocha": "^5.2.0"
     },
     "scripts": {
         "server": "npx nodemon ./server.js --port 8080 --root './test'",
         "generator": "node ./generator.js --root './test' --out './out'",
-        "test": "npx mocha"
+        "test": "npx mocha",
+        "lint": "npx eslint ./src ./test --fix"
     },
     "engines": {
         "node": ">=10"

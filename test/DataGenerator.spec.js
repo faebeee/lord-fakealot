@@ -14,41 +14,41 @@ describe('DataGenerator', function() {
         return schemaLoader.getSchema('LangSwitch')
             .then((schema) => {
                 const DEFAULT_LANGSWITCH_DEFINITION = {
-                    'title': 'default',
-                    'type': 'object',
-                    'properties': {
-                        'type': {
-                            'description': 'Type definition',
-                            'faker': 'lorem.paragraph',
-                            'type': 'string',
-                            'title': 'type'
+                    title: 'default',
+                    type: 'object',
+                    properties: {
+                        type: {
+                            description: 'Type definition',
+                            faker: 'lorem.paragraph',
+                            type: 'string',
+                            title: 'type',
                         },
-                        'isActive': {
-                            'description': 'Type definition',
-                            'pattern': 'yes|no',
-                            'type': 'string',
-                            'title': 'isActive'
+                        isActive: {
+                            description: 'Type definition',
+                            pattern: 'yes|no',
+                            type: 'string',
+                            title: 'isActive',
                         },
-                        'languages': {
-                            'type': 'array',
-                            'items': {
-                                '$ref': '#/definitions/ILink'
+                        languages: {
+                            type: 'array',
+                            items: {
+                                $ref: '#/definitions/ILink',
                             },
-                            'title': 'languages'
-                        }
+                            title: 'languages',
+                        },
                     },
-                    'required': [
+                    required: [
                         'isActive',
                         'languages',
-                        'type'
-                    ]
+                        'type',
+                    ],
                 };
 
                 assert.equal(JSON.stringify(schema.definitions.default), JSON.stringify(DEFAULT_LANGSWITCH_DEFINITION));
             });
     });
 
-    it('Populate data', async () => {
+    it('Populate data', () => {
         const schemaLoader = new SchemaLoader(SOURCE);
         return schemaLoader.getSchema('LangSwitch')
             .then(async (schema) => {
@@ -61,7 +61,7 @@ describe('DataGenerator', function() {
             });
     });
 
-    it('Populate complex data', async () => {
+    it('Populate complex data', () => {
         const schemaLoader = new SchemaLoader(SOURCE);
         return schemaLoader.getSchema('ComplexInterface')
             .then(async (schema) => {
@@ -74,7 +74,7 @@ describe('DataGenerator', function() {
     });
 
 
-    it('Populate complex multi file data', async () => {
+    it('Populate complex multi file data', () => {
         const schemaLoader = new SchemaLoader(SOURCE);
         return schemaLoader.getSchema('MultiFileInterface')
             .then(async (schema) => {
@@ -88,7 +88,7 @@ describe('DataGenerator', function() {
             });
     });
 
-    it('Populate data with faker', async () => {
+    it('Populate data with faker', () => {
         const schemaLoader = new SchemaLoader(SOURCE);
         return schemaLoader.getSchema('FakerInterface')
             .then(async (schema) => {

@@ -3,11 +3,10 @@ const { mkdirp } = require('fs-extra');
 const { dirname, format, join } = require('path');
 
 class SchemaDataWriter {
-
     /**
-     *
-     * @param folder
-     * @param data
+     * Write files
+     * @param {string} folder destination folder
+     * @param {object} data populated json structure
      * @return {Promise<void>}
      */
     async writeFiles(folder, data) {
@@ -18,7 +17,6 @@ class SchemaDataWriter {
             const interfaceFile = format({ name: interfaceName, ext: `.json` });
             await this.writeFile(join(folder, interfaceFile), interfaceData);
         }
-
     }
 
     /**
@@ -39,7 +37,7 @@ class SchemaDataWriter {
 
                 return res();
             });
-        })
+        });
     }
 }
 

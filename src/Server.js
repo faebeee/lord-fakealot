@@ -1,11 +1,9 @@
-'use strict';
-
 const Hapi = require('hapi');
 const addCorsHeaders = require('./util/addCORSHeaders');
 
-module.exports = class Server {
+class Server {
     /**
-     *
+     * Server
      * @param {number} port
      * @param {string} host
      */
@@ -15,8 +13,7 @@ module.exports = class Server {
             host: host,
         });
 
-        this.server.ext('onPreResponse', addCorsHeaders)
-
+        this.server.ext('onPreResponse', addCorsHeaders);
     }
 
     /**
@@ -25,7 +22,7 @@ module.exports = class Server {
      */
     route(data) {
         this.server.route(data);
-        console.log(`Route: ${this.server.info.uri}${data.path}`);
+        console.log(`Route: ${ this.server.info.uri }${ data.path }`);
     }
 
     /**
@@ -34,6 +31,8 @@ module.exports = class Server {
      */
     async start() {
         await this.server.start();
-        console.log(`Server running at: ${this.server.info.uri}`);
+        console.log(`Server running at: ${ this.server.info.uri }`);
     }
-};
+}
+
+module.exports = Server;

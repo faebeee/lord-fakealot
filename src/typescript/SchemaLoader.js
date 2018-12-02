@@ -8,13 +8,12 @@ const SETTINGS = {
     topRef: true,
     ref: true,
     ignoreErrors: false,
-    validationKeywords: ['faker']
+    validationKeywords: ['faker'],
 };
 
 class SchemaLoader {
-
     /**
-     *
+     * SchemaLoader
      * @param {string} sourceDir
      */
     constructor(sourceDir) {
@@ -52,7 +51,7 @@ class SchemaLoader {
     }
 
     /**
-     * Build the schemagenerator
+     * Build the schema generator
      * @return {Promise<JsonSchemaGenerator>}
      * @private
      */
@@ -69,13 +68,13 @@ class SchemaLoader {
                 });
                 this.generator = buildGenerator(this.program, SETTINGS);
                 return this.generator;
-            })
+            });
     }
 
     /**
      * Get a schema for an interfacename
      * @param {string} name
-     * @returns {object}
+     * @return {object}
      */
     getSchema(name) {
         return this._getGenerator()
@@ -83,7 +82,7 @@ class SchemaLoader {
                 const schema = generator.getSchemaForSymbol(name, true);
                 delete schema.$schema;
                 return schema;
-            })
+            });
     }
 }
 
