@@ -3,7 +3,13 @@
 It loads all interfaces from a given directory and can either expose an HTTP api or
 generate `json` files with mocked data in it
 
-## Files Command
+## Install
+`npm i -g lord-fakealot`
+This will then expose `fakealot` as a CLI entrypoint for this app
+
+## Commands
+
+### Files Command
 This commands create a jsonfile for every interface found in the `sourceDir` directory. The name of each file
 is the interfacename.
 
@@ -56,7 +62,7 @@ ___ComplexInterface.json___
 ```
 
 
-## File Command
+### File Command
 The `file` command will create a file, which stores a a collection with fake data for all interfaces found in the `sourceDir`
 
 The command
@@ -117,9 +123,7 @@ with the content
 }
 ```
 
-
-
-## HTTP Api
+### HTTP Api
 This command creates a server which then can be accessed from you App. By passing the interface name to the route,
 data with the same structure as the interface is served.
 
