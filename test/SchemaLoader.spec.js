@@ -13,5 +13,4 @@ describe('SchemaLoader', function() {
                 assert.equal(files.length, 4);
             });
     });
-
 });

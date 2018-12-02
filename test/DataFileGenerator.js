@@ -1,5 +1,5 @@
 const { resolve } = require('path');
-const test = require('unit.js');
+const {expect} = require('chai');
 
 const DataFileGenerator = require('../src/DataFileGenerator');
 const SchemaLoader = require('../src/typescript/SchemaLoader');
@@ -13,11 +13,9 @@ describe('DataFileGenerator', function() {
         return dataFileGenerator._getInterfaceSchemas()
             .then(allSchemas => {
 
-                test.object(allSchemas)
-                    .hasProperty('ComplexInterface');
+                expect(allSchemas).to.have.property('ComplexInterface');
+                expect(allSchemas).to.have.property('FakerInterface');
 
-                test.object(allSchemas)
-                    .hasProperty('FakerInterface');
             });
     });
 });

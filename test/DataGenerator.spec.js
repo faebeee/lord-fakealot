@@ -1,5 +1,6 @@
 const { resolve } = require('path');
-const test = require('unit.js');
+const { expect } = require('chai');
+const assert = require('assert');
 
 const DataGenerator = require('../src/typescript/DataGenerator');
 const SchemaLoader = require('../src/typescript/SchemaLoader');
@@ -43,8 +44,7 @@ describe('DataGenerator', function() {
                     ]
                 };
 
-                test.object(schema.definitions.default)
-                    .is(DEFAULT_LANGSWITCH_DEFINITION);
+                assert.equal(JSON.stringify(schema.definitions.default), JSON.stringify(DEFAULT_LANGSWITCH_DEFINITION));
             });
     });
 
@@ -55,14 +55,9 @@ describe('DataGenerator', function() {
                 const dataGenerator = new DataGenerator(SEED);
                 const populatedData = await dataGenerator.populateData(schema);
 
-                test.object(populatedData)
-                    .hasProperty('languages');
-
-                test.object(populatedData)
-                    .hasProperty('type');
-
-                test.object(populatedData)
-                    .hasProperty('isActive');
+                expect(populatedData).to.have.property('languages');
+                expect(populatedData).to.have.property('type');
+                expect(populatedData).to.have.property('isActive');
             });
     });
 
@@ -73,11 +68,8 @@ describe('DataGenerator', function() {
                 const dataGenerator = new DataGenerator(SEED);
                 const populatedData = await dataGenerator.populateData(schema);
 
-                test.object(populatedData)
-                    .hasProperty('items');
-
-                test.object(populatedData)
-                    .hasProperty('type');
+                expect(populatedData).to.have.property('items');
+                expect(populatedData).to.have.property('type');
             });
     });
 
@@ -89,17 +81,10 @@ describe('DataGenerator', function() {
                 const dataGenerator = new DataGenerator(SEED);
                 const populatedData = await dataGenerator.populateData(schema);
 
-                test.object(populatedData)
-                    .hasProperty('langSwitch');
-
-                test.object(populatedData.langSwitch)
-                    .hasProperty('languages');
-
-                test.object(populatedData)
-                    .hasProperty('complex');
-
-                test.object(populatedData)
-                    .hasProperty('hello');
+                expect(populatedData).to.have.property('langSwitch');
+                expect(populatedData.langSwitch).to.have.property('languages');
+                expect(populatedData).to.have.property('complex');
+                expect(populatedData).to.have.property('hello');
             });
     });
 
@@ -110,11 +95,8 @@ describe('DataGenerator', function() {
                 const dataGenerator = new DataGenerator(SEED);
                 const populatedData = await dataGenerator.populateData(schema);
 
-                test.object(populatedData)
-                    .hasProperty('word');
-
-                test.object(populatedData)
-                    .hasProperty('finance');
+                expect(populatedData).to.have.property('word');
+                expect(populatedData).to.have.property('finance');
             });
     });
 });
