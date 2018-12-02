@@ -9,6 +9,14 @@ This will then expose `fakealot` as a CLI entrypoint for this app
 
 ## Commands
 
+### Help
+Prints the help info to the CLI
+
+```bash
+fakealot -h
+```
+
+
 ### Files Command
 This commands create a jsonfile for every interface found in the `sourceDir` directory. The name of each file
 is the interfacename.
