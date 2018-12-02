@@ -33,7 +33,8 @@
         "service.tsdatagenerator": {
             "file": "../src/typescript/DataGenerator.js",
             "arguments": [
-                "%fakerseed%"
+                "%fakerseed%",
+                "%fakerlocale%"
             ]
         },
         "service.schemadatawriter": {

@@ -4,11 +4,7 @@
     "description": "",
     "main": "server.js",
     "bin": {
-        "fakealot": "index.js",
-        "fakealot-api": "server.js"
-    },
-    "directories": {
-        "example": "example"
+        "fakealot": "index.js"
     },
     "dependencies": {
         "faker": "^4.1.0",
@@ -17,19 +13,22 @@
         "hapi": "^17.8.1",
         "hapi-cors-headers": "^1.0.3",
         "json-schema-faker": "^0.5.0-rc16",
-        "lodash": "^4.17.11",
-        "minimist": "^1.2.0",
-        "reflect-metadata": "^0.1.12",
         "servicecontainer": "^7.2.1",
-        "typescript-json-schema": "^0.33.0"
+        "typescript-json-schema": "^0.33.0",
+        "yargs": "^12.0.5"
     },
     "devDependencies": {
-        "nodemon": "^1.18.7"
+        "mocha": "^5.2.0",
+        "unit.js": "^2.0.0"
     },
     "scripts": {
-        "server-dev": "npx nodemon ./server.js --port 8080 --root './test'",
-        "generator-dev": "npx nodemon ./index.js --root './test' --out './out/data.json'"
+        "server": "npx nodemon ./server.js --port 8080 --root './test'",
+        "generator": "node ./generator.js --root './test' --out './out'",
+        "test": "npx mocha"
     },
-    "author": "",
+    "engines": {
+        "node": ">=10"
+    },
+    "author": "faebeee",
     "license": "ISC"
 }

@@ -1,9 +1,23 @@
 const { writeFile } = require('fs');
 const { mkdirp } = require('fs-extra');
-const { dirname } = require('path');
+const { dirname, format, join } = require('path');
 
 class SchemaDataWriter {
-    writeFiles(folder, data) {
+
+    /**
+     *
+     * @param folder
+     * @param data
+     * @return {Promise<void>}
+     */
+    async writeFiles(folder, data) {
+        const interfaceNames = Object.keys(data);
+        for (let i = 0; i < interfaceNames.length; i++) {
+            const interfaceName = interfaceNames[i];
+            const interfaceData = data[interfaceName];
+            const interfaceFile = format({ name: interfaceName, ext: `.json` });
+            await this.writeFile(join(folder, interfaceFile), interfaceData);
+        }
 
     }
 
@@ -27,7 +41,6 @@ class SchemaDataWriter {
             });
         })
     }
-
 }
 
 module.exports = SchemaDataWriter;

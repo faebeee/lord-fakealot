@@ -1,6 +1,9 @@
 const jsf = require('json-schema-faker');
 
 class DataGenerator {
+    /**
+     * @param {number} fakerSeed
+     */
     constructor(fakerSeed) {
         jsf.extend('faker', () => {
             const faker = require('faker');
@@ -9,8 +12,13 @@ class DataGenerator {
         });
     }
 
-    populateData(schema) {
-        return jsf.generate(schema);
+    /**
+     * Populate json schema with fake data
+     * @param {object} schema
+     * @return {object}
+     */
+    async populateData(schema) {
+        return await jsf.resolve(schema);
     }
 }
 

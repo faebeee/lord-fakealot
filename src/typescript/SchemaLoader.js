@@ -12,17 +12,31 @@ const SETTINGS = {
 };
 
 class SchemaLoader {
+
+    /**
+     *
+     * @param {string} sourceDir
+     */
     constructor(sourceDir) {
         this.sourceDir = sourceDir;
+        /**
+         *
+         * @type {JsonSchemaGenerator}
+         */
         this.generator = null;
+
+        /**
+         *
+         * @type {ts.Program}
+         */
         this.program = null;
 
         this._getFiles();
     }
 
     /**
-     *
-     * @return {*}
+     * Get all typescript files
+     * @return {Promise<string[]>}
      * @private
      */
     _getFiles() {
@@ -38,8 +52,8 @@ class SchemaLoader {
     }
 
     /**
-     *
-     * @return {*}
+     * Build the schemagenerator
+     * @return {Promise<JsonSchemaGenerator>}
      * @private
      */
     _getGenerator() {
@@ -59,8 +73,9 @@ class SchemaLoader {
     }
 
     /**
-     *
-     * @param name
+     * Get a schema for an interfacename
+     * @param {string} name
+     * @returns {object}
      */
     getSchema(name) {
         return this._getGenerator()

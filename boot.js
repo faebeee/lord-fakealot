@@ -1,11 +1,15 @@
 const { resolve } = require('path');
-const args = require('minimist')(process.argv.slice(2));
 
-
-module.exports = function () {
+/**
+ *
+ * @param root
+ * @return {Container}
+ */
+module.exports = function (root) {
     const ServiceContainer = require('servicecontainer');
-    let container = ServiceContainer.default.create(__dirname + '/config/services.json', {
-        interfaceSourceDir: resolve(args.root)
+    const container = ServiceContainer.default.create(__dirname + '/config/services.json', {
+        interfaceSourceDir: resolve(root)
     });
-    return { container, args };
+
+    return container;
 };

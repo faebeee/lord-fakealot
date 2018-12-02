@@ -25,6 +25,7 @@ module.exports = class Server {
      */
     route(data) {
         this.server.route(data);
+        console.log(`Route: ${this.server.info.uri}${data.path}`);
     }
 
     /**

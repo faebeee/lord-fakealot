@@ -1,6 +1,5 @@
 const { getTypescriptFiles } = require('./util/getFiles');
 const getInterfaceNameFromFile = require('./util/getInterfaceNameFromFile');
-const isDir = require('./util/isDir');
 
 class DataFileGenerator {
     /**
@@ -20,7 +19,7 @@ class DataFileGenerator {
 
     /**
      * Load all .ts files
-     * @return {*}
+     * @return {Promise<string[]>}
      * @private
      */
     _getFiles() {
@@ -37,16 +36,22 @@ class DataFileGenerator {
 
     /**
      * Generate fakedata json files
-     * @param out
+     * @param {string} out directory or file where to store the data
      * @return {Promise<void>}
      */
-    async generate(out) {
+    async generateFiles(outDir) {
         const schemas = await this._getInterfaceSchemas();
-        if (isDir(out)) {
-            await this.dataWriter.writeFiles(out, schemas);
-        } else {
-            await this.dataWriter.writeFile(out, schemas);
-        }
+        await this.dataWriter.writeFiles(outDir, schemas);
+    }
+
+    /**
+     *
+     * @param outFile
+     * @return {Promise<void>}
+     */
+    async generateFile(outFile) {
+        const schemas = await this._getInterfaceSchemas();
+        await this.dataWriter.writeFile(outFile, schemas);
     }
 
     /**
@@ -56,23 +61,25 @@ class DataFileGenerator {
      */
     async _getInterfaceSchemas() {
         const files = await this._getFiles();
-        return files.reduce(async (acc, file) => {
+        const acc = {};
+
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
             const interfaceName = getInterfaceNameFromFile(file);
-            const schema = await this._generateDataForInterface(interfaceName);
-            acc[interfaceName] = schema;
-            return acc;
-        }, {});
+            acc[interfaceName] = await this._generateDataForInterface(interfaceName);
+        }
+        return acc;
     }
 
     /**
      * Generate fakedata for interface schema
-     * @param interfaceName
-     * @return {Promise<*>}
+     * @param {string} interfaceName
+     * @return {Promise<data>}
      * @private
      */
     async _generateDataForInterface(interfaceName) {
         const schema = await this.schemaLoader.getSchema(interfaceName);
-        return this.dataGenerator.populateData(schema);
+        return await this.dataGenerator.populateData(schema);
     }
 }
 
