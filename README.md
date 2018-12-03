@@ -1,4 +1,7 @@
 # lord-fakealot
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a6989f4384e0440394870f22ad1c0f8f)](https://app.codacy.com/app/faebeee/lord-fakealot?utm_source=github.com&utm_medium=referral&utm_content=faebeee/lord-fakealot&utm_campaign=Badge_Grade_Dashboard)
+
 `lord-fakealot` is a utility to generate mocked data based on typescript interfaces.
 It loads all interfaces from a given directory and can either expose an HTTP api or
 generate `json` files with mocked data in it
