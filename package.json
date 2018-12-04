@@ -42,16 +42,6 @@
     "engines": {
         "node": ">=10"
     },
-    "files": [
-        "./config",
-        "./src",
-        "boot.js",
-        "generator.js",
-        "index.js",
-        "server.js",
-        "config/controllers.json",
-        "config/services.json"
-    ],
     "author": "faebeee",
     "license": "ISC"
 }
