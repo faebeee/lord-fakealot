@@ -79,7 +79,7 @@ The `file` command will create a file, which stores a a collection with fake dat
 The command
 
 ```bash
-fakealot file --file=./mock.json --sourceDir=./interfaces'
+fakealot file --file=./mock.json --sourceDir=./interfaces
 ```
 
 will create a new file name `mock.json`
@@ -139,7 +139,7 @@ This command creates a server which then can be accessed from you App. By passin
 data with the same structure as the interface is served.
 
 ```bash
-    fakealot api --port=3000--sourceDir=./SRC
+    fakealot api --port=3000 --sourceDir=./SRC
 ```
 now by visting `http://localhost:3000/api/schema/{INTERFACENAME}` you'll get some mocked data.
 
