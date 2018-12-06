@@ -1,18 +1,20 @@
 const boot = require('./boot');
 
-module.exports = function(sourceDir, port) {
-    const container = boot(sourceDir);
+module.exports = async function(sourceDir, port, tsconfig, logLevel) {
+    const container = boot(sourceDir, tsconfig, logLevel);
     container.addParameters({
         port: port,
         host: 'localhost',
     });
-    container.get('service.server').start();
+    await container.get('service.server').start();
 
-    const tsSchemaController = container.get('controller.ts.schema');
+    const schemaController = container.get('controller.schema');
 
     container.get('service.server').route({
         method: 'GET',
-        path: '/api/schema/{interface}',
-        handler: tsSchemaController.getData.bind(tsSchemaController)
+        path: '/api/{interface}',
+        handler: schemaController.getData.bind(schemaController),
     });
+
+    return container;
 };

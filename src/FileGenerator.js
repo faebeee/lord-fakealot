@@ -1,19 +1,21 @@
 const { getTypescriptFiles } = require('./util/getFiles');
 const getInterfaceNameFromFile = require('./util/getInterfaceNameFromFile');
 
-class DataFileGenerator {
+class FileGenerator {
     /**
      * DataFileGenerator
      * @param {string} sourceDir
      * @param {SchemaLoader} schemaLoader
      * @param {DataGenerator} dataGenerator
      * @param {SchemaDataWriter} dataWriter
+     * @param {Logger} logger
      */
-    constructor(sourceDir, schemaLoader, dataGenerator, dataWriter) {
+    constructor(sourceDir, schemaLoader, dataGenerator, dataWriter, logger) {
         this.sourceDir = sourceDir;
         this.schemaLoader = schemaLoader;
         this.dataGenerator = dataGenerator;
         this.dataWriter = dataWriter;
+        this.logger = logger.getTagged('FileGenerator');
         this.files = null;
     }
 
@@ -29,6 +31,7 @@ class DataFileGenerator {
 
         return getTypescriptFiles(this.sourceDir)
             .then(files => {
+                this.logger.debug(`Loaded ${files.length} files`);
                 this.files = files;
                 return this.files;
             });
@@ -40,6 +43,7 @@ class DataFileGenerator {
      * @return {Promise<void>}
      */
     async generateFiles(outDir) {
+        this.logger.debug(`Generating files in ${outDir}`);
         const schemas = await this._getInterfaceSchemas();
         await this.dataWriter.writeFiles(outDir, schemas);
     }
@@ -50,6 +54,7 @@ class DataFileGenerator {
      * @return {Promise<void>}
      */
     async generateFile(outFile) {
+        this.logger.debug(`Generating file  ${outFile}`);
         const schemas = await this._getInterfaceSchemas();
         await this.dataWriter.writeFile(outFile, schemas);
     }
@@ -62,11 +67,17 @@ class DataFileGenerator {
     async _getInterfaceSchemas() {
         const files = await this._getFiles();
         const acc = {};
+        this.logger.debug(`Generating schemas`);
 
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const interfaceName = getInterfaceNameFromFile(file);
-            acc[interfaceName] = await this._generateDataForInterface(interfaceName);
+            const interfaceData = await this._generateDataForInterface(interfaceName);
+            if (interfaceData) {
+                acc[interfaceName] = interfaceData;
+            } else {
+                this.logger.debug(`No data for ${interfaceName}`);
+            }
         }
         return acc;
     }
@@ -79,8 +90,11 @@ class DataFileGenerator {
      */
     async _generateDataForInterface(interfaceName) {
         const schema = await this.schemaLoader.getSchema(interfaceName);
+        if (!schema) {
+            return null;
+        }
         return await this.dataGenerator.populateData(schema);
     }
 }
 
-module.exports = DataFileGenerator;
+module.exports = FileGenerator;

@@ -23,7 +23,7 @@
         "glob": "^7.1.3",
         "hapi": "^17.8.1",
         "json-schema-faker": "^0.5.0-rc16",
-        "servicecontainer": "^7.2.1",
+        "servicecontainer": "^7.3.0",
         "typescript-json-schema": "^0.33.0",
         "yargs": "^12.0.5"
     },
@@ -31,7 +31,8 @@
         "@dreipol/eslint-config": "^6.0.2",
         "babel-eslint": "^10.0.1",
         "chai": "^4.2.0",
-        "mocha": "^5.2.0"
+        "mocha": "^5.2.0",
+        "request": "^2.88.0"
     },
     "scripts": {
         "server": "npx nodemon ./server.js --port 8080 --root './test'",

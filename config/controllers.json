@@ -1,7 +1,7 @@
 {
     "services": {
-        "controller.ts.schema": {
-            "file": "../src/api/ts/Controller.js",
+        "controller.schema": {
+            "file": "../src/api/SchemaController.js",
             "arguments": [
                 "@service.tsschemaloader",
                 "@service.tsdatagenerator"

@@ -2,15 +2,16 @@ const { resolve } = require('path');
 const { expect } = require('chai');
 const assert = require('assert');
 
-const DataGenerator = require('../src/typescript/DataGenerator');
-const SchemaLoader = require('../src/typescript/SchemaLoader');
+const DataGenerator = require('../src/DataGenerator');
+const SchemaLoader = require('../src/SchemaLoader');
+const Logger = require('../src/Logger');
 
 const SOURCE = resolve('./test/interfaces');
 const SEED = 6436364;
 
 describe('DataGenerator', function() {
     it('Load custom annotations', () => {
-        const schemaLoader = new SchemaLoader(SOURCE);
+        const schemaLoader = new SchemaLoader(SOURCE, new Logger());
         return schemaLoader.getSchema('LangSwitch')
             .then((schema) => {
                 const DEFAULT_LANGSWITCH_DEFINITION = {
@@ -49,7 +50,7 @@ describe('DataGenerator', function() {
     });
 
     it('Populate data', () => {
-        const schemaLoader = new SchemaLoader(SOURCE);
+        const schemaLoader = new SchemaLoader(SOURCE, new Logger());
         return schemaLoader.getSchema('LangSwitch')
             .then(async (schema) => {
                 const dataGenerator = new DataGenerator(SEED);
@@ -62,7 +63,7 @@ describe('DataGenerator', function() {
     });
 
     it('Populate complex data', () => {
-        const schemaLoader = new SchemaLoader(SOURCE);
+        const schemaLoader = new SchemaLoader(SOURCE, new Logger());
         return schemaLoader.getSchema('ComplexInterface')
             .then(async (schema) => {
                 const dataGenerator = new DataGenerator(SEED);
@@ -75,7 +76,7 @@ describe('DataGenerator', function() {
 
 
     it('Populate complex multi file data', () => {
-        const schemaLoader = new SchemaLoader(SOURCE);
+        const schemaLoader = new SchemaLoader(SOURCE, new Logger());
         return schemaLoader.getSchema('MultiFileInterface')
             .then(async (schema) => {
                 const dataGenerator = new DataGenerator(SEED);
@@ -89,7 +90,7 @@ describe('DataGenerator', function() {
     });
 
     it('Populate data with faker', () => {
-        const schemaLoader = new SchemaLoader(SOURCE);
+        const schemaLoader = new SchemaLoader(SOURCE, new Logger());
         return schemaLoader.getSchema('FakerInterface')
             .then(async (schema) => {
                 const dataGenerator = new DataGenerator(SEED);

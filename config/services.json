@@ -12,33 +12,42 @@
             "file": "../src/Server.js",
             "arguments": [
                 "%port%",
-                "%host%"
+                "%host%",
+                "@service.logger"
             ]
         },
-        "service.datafilegenerator": {
-            "file": "../src/DataFileGenerator.js",
+        "service.filegenerator": {
+            "file": "../src/FileGenerator.js",
             "arguments": [
                 "%interfaceSourceDir%",
                 "@service.tsschemaloader",
                 "@service.tsdatagenerator",
-                "@service.schemadatawriter"
+                "@service.schemadatawriter",
+                "@service.logger"
             ]
         },
         "service.tsschemaloader": {
-            "file": "../src/typescript/SchemaLoader.js",
+            "file": "../src/SchemaLoader.js",
             "arguments": [
-                "%interfaceSourceDir%"
+                "%interfaceSourceDir%",
+                "@service.logger",
+                "%tsconfig%"
             ]
         },
         "service.tsdatagenerator": {
-            "file": "../src/typescript/DataGenerator.js",
+            "file": "../src/DataGenerator.js",
             "arguments": [
-                "%fakerseed%",
-                "%fakerlocale%"
+                "%fakerseed%"
             ]
         },
         "service.schemadatawriter": {
-            "file": "../src/SchemaDataWriter.js"
+            "file": "../src/DataFileWriter.js"
+        },
+        "service.logger": {
+            "file": "../src/Logger.js",
+            "arguments": [
+                "%loglevel%"
+            ]
         }
     }
 }

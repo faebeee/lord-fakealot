@@ -6,12 +6,14 @@ class Server {
      * Server
      * @param {number} port
      * @param {string} host
+     * @param {Logger} logger
      */
-    constructor(port, host = 'localhost') {
+    constructor(port, host = 'localhost', logger) {
         this.server = Hapi.server({
             port: port,
             host: host,
         });
+        this.logger = logger.getTagged('Server');
 
         this.server.ext('onPreResponse', addCorsHeaders);
     }
@@ -22,7 +24,7 @@ class Server {
      */
     route(data) {
         this.server.route(data);
-        console.log(`Route: ${ this.server.info.uri }${ data.path }`);
+        this.logger.info(`Route: ${this.server.info.uri}${data.path}`);
     }
 
     /**
@@ -31,7 +33,15 @@ class Server {
      */
     async start() {
         await this.server.start();
-        console.log(`Server running at: ${ this.server.info.uri }`);
+        this.logger.info(`Server running at: ${this.server.info.uri}`);
+    }
+
+    /**
+     * Stop the server
+     * @return {Promise<void>}
+     */
+    async stop() {
+        await this.server.stop();
     }
 }
 

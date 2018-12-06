@@ -2,7 +2,7 @@ const { writeFile } = require('fs');
 const { mkdirp } = require('fs-extra');
 const { dirname, format, join } = require('path');
 
-class SchemaDataWriter {
+class DataFileWriter {
     /**
      * Write files
      * @param {string} folder destination folder
@@ -41,4 +41,4 @@ class SchemaDataWriter {
     }
 }
 
-module.exports = SchemaDataWriter;
+module.exports = DataFileWriter;

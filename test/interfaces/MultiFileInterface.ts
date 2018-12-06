@@ -1,5 +1,5 @@
-import {LangSwitch} from "./LangSwitch";
-import {ComplexInterface} from "./ComplexInterface";
+import { LangSwitch } from "./LangSwitch";
+import { ComplexInterface } from "./ComplexInterface";
 
 export interface MultiFileInterface {
     hello: string;

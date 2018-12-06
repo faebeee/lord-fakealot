@@ -3,13 +3,15 @@ const { resolve } = require('path');
 /**
  *
  * @param root
+ * @param tsconfig
+ * @param loglevel
  * @return {Container}
  */
-module.exports = function (root) {
+module.exports = function(root, tsconfig, loglevel) {
     const ServiceContainer = require('servicecontainer');
-    const container = ServiceContainer.default.create(__dirname + '/config/services.json', {
-        interfaceSourceDir: resolve(root)
+    return ServiceContainer.default.create(__dirname + '/config/services.json', {
+        interfaceSourceDir: resolve(root),
+        loglevel,
+        tsconfig,
     });
-
-    return container;
 };

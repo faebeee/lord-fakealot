@@ -1,16 +1,25 @@
 const boot = require('./boot');
 
-module.exports = function(sourceDir, outDir, outFile) {
-    const container = boot(sourceDir);
+/**
+ *
+ * @param {string} sourceDir
+ * @param {string} tsconfig
+ * @param {string} outDir
+ * @param {string} outFile
+ * @param {number} loglevel
+ * @return {Promise<void>}
+ */
+module.exports = async function(sourceDir, tsconfig = null, outDir = null, outFile = null, loglevel = 0) {
+    const container = boot(sourceDir, tsconfig, loglevel);
 
+    /** @type {FileGenerator} */
+    const generator = container.get('service.filegenerator');
 
-    /** @type {DataFileGenerator} */
-    const generator = container.get('service.datafilegenerator');
-
-    if(outDir) {
-        generator.generateFiles(outDir);
+    if (outDir) {
+        await generator.generateFiles(outDir);
     }
-    if(outFile) {
-        generator.generateFile(outFile);
+
+    if (outFile) {
+        await generator.generateFile(outFile);
     }
 };

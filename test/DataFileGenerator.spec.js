@@ -1,15 +1,16 @@
 const { resolve } = require('path');
 const { expect } = require('chai');
 
-const DataFileGeneratorSpec = require('../src/DataFileGenerator');
-const SchemaLoader = require('../src/typescript/SchemaLoader');
-const DataGenerator = require('../src/typescript/DataGenerator');
+const FileGenerator = require('../src/FileGenerator');
+const SchemaLoader = require('../src/SchemaLoader');
+const DataGenerator = require('../src/DataGenerator');
+const Logger = require('../src/Logger');
 
 const SOURCE = resolve('./test/interfaces');
 
 describe('DataFileGenerator', function() {
     it('loads all files from directory', () => {
-        const dataFileGenerator = new DataFileGeneratorSpec(SOURCE, new SchemaLoader(SOURCE), new DataGenerator());
+        const dataFileGenerator = new FileGenerator(SOURCE, new SchemaLoader(SOURCE, new Logger()), new DataGenerator(), null, new Logger());
         return dataFileGenerator._getInterfaceSchemas()
             .then(allSchemas => {
                 expect(allSchemas).to.have.property('ComplexInterface');
