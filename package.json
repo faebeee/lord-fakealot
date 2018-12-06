@@ -1,6 +1,6 @@
 {
     "name": "lord-fakealot",
-    "version": "0.5.6",
+    "version": "1.0.0",
     "description": "Generate Mockdata for your app",
     "keywords": [
         "mock",
