@@ -1,4 +1,4 @@
-export default interface FakerInterface {
+export interface FakerInterface {
     
     /**
      * @faker lorem.word

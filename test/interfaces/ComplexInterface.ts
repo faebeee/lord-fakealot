@@ -1,4 +1,4 @@
-export default interface ComplexInterface {
+export interface ComplexInterface {
     type: string;
     
     /**

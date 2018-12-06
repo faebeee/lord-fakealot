@@ -14,7 +14,7 @@ describe('DataGenerator', function() {
         return schemaLoader.getSchema('LangSwitch')
             .then((schema) => {
                 const DEFAULT_LANGSWITCH_DEFINITION = {
-                    title: 'default',
+                    title: 'LangSwitch',
                     type: 'object',
                     properties: {
                         type: {
@@ -44,7 +44,7 @@ describe('DataGenerator', function() {
                     ],
                 };
 
-                assert.equal(JSON.stringify(schema.definitions.default), JSON.stringify(DEFAULT_LANGSWITCH_DEFINITION));
+                assert.equal(JSON.stringify(schema.definitions.LangSwitch), JSON.stringify(DEFAULT_LANGSWITCH_DEFINITION));
             });
     });
 

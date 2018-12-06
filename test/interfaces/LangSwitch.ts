@@ -1,4 +1,4 @@
-export default interface LangSwitch {
+export interface LangSwitch {
     /**
      * Type definition
      * @faker lorem.paragraph
