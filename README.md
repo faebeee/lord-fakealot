@@ -21,11 +21,11 @@ fakealot -h
 
 
 ### Files Command
-This commands create a jsonfile for every interface found in the `sourceDir` directory. The name of each file
+This commands create a jsonfile for every interface found in the `dir` directory. The name of each file
 is the interfacename.
 
 ```bash
-fakealot files --out=./out --sourceDir=./test
+fakealot files --out ./out --dir ./test --tsconfig ./tsconfig.json
 ```
 
 Create a directory `out` with files in it. 
@@ -74,12 +74,12 @@ ___ComplexInterface.json___
 
 
 ### File Command
-The `file` command will create a file, which stores a a collection with fake data for all interfaces found in the `sourceDir`
+The `file` command will create a file, which stores a a collection with fake data for all interfaces found in the `dir`
 
 The command
 
 ```bash
-fakealot file --file=./mock.json --sourceDir=./interfaces
+fakealot file --file ./mock.json --dir ./interfaces --tsconfig ./tsconfig.json
 ```
 
 will create a new file name `mock.json`
@@ -139,7 +139,7 @@ This command creates a server which then can be accessed from you App. By passin
 data with the same structure as the interface is served.
 
 ```bash
-    fakealot api --port=3000 --sourceDir=./SRC
+    fakealot api --port 3000 --dir ./SRC --tsconfig ./tsconfig.json
 ```
 now by visting `http://localhost:3000/api/schema/{INTERFACENAME}` you'll get some mocked data.
 
