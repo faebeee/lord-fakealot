@@ -6,8 +6,6 @@
 It loads all interfaces from a given directory and can either expose an HTTP api or
 generate `json` files with mocked data in it
 
-[[ toc ]]
-
 ## Install
 `npm i -g lord-fakealot`
 This will then expose `fakealot` as a CLI entrypoint for this app
@@ -41,7 +39,7 @@ fakealot files --out ./out --dir ./test --tsconfig ./tsconfig.json
 
 | Name | Type |Description |
 |---|---|---|
-|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+| --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
 | --out | string | Folder where all files will be created |
 | --tsconfig | string | Path to the tsconfig file
 
@@ -103,7 +101,7 @@ fakealot file --file ./mock.json --dir ./interfaces --tsconfig ./tsconfig.json
 
 | Name | Type |Description |
 |---|---|---|
-|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+| --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
 | --file | string | Path to file where the data will be dumped |
 | --tsconfig | string | Path to the tsconfig file
 
@@ -172,9 +170,9 @@ now by visting `http://localhost:3000/api/schema/{INTERFACENAME}` you'll get som
 
 | Name | Type |Description |
 |---|---|---|
-|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
-|--port| number | Port number
-|--tsconfig| string | Path to the tsconfig file
+| --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+| --port | number | Port number
+| --tsconfig | string | Path to the tsconfig file
 
 
 
