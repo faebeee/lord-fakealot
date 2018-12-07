@@ -4,8 +4,8 @@ const request = require('request');
 
 const server = require('../server');
 
-describe('Generator', function() {
-    it('create files', async () => {
+describe('Server', function() {
+    it('expose api', async () => {
         const container = await server(resolve('test/interfaces'), 8080);
 
         request.get('http://localhost:8080/api/ComplexInterface', { json: true }, (err, res, body) => {

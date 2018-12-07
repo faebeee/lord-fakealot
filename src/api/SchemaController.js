@@ -1,12 +1,11 @@
 class SchemaController {
     /**
      * SchemaController
-     * @param {SchemaLoader} tsSchemaLoader
-     * @param {DataGenerator} tsDataCreator
+     *
+     * @param {InterfacePopulator} interfacePopulator
      */
-    constructor(tsSchemaLoader, tsDataCreator) {
-        this.interfaceSchemaLoader = tsSchemaLoader;
-        this.dataCreator = tsDataCreator;
+    constructor(interfacePopulator) {
+        this.interfacePopulator = interfacePopulator;
     }
 
     /**
@@ -16,8 +15,7 @@ class SchemaController {
      */
     async getData(req) {
         try {
-            const schema = await this.interfaceSchemaLoader.getSchema(req.params.interface);
-            return await this.dataCreator.populateData(schema);
+            return await this.interfacePopulator.populate(req.params.interface);
         } catch (e) {
             return e;
         }

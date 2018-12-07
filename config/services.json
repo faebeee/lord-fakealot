@@ -20,13 +20,13 @@
             "file": "../src/FileGenerator.js",
             "arguments": [
                 "%interfaceSourceDir%",
-                "@service.tsschemaloader",
-                "@service.tsdatagenerator",
-                "@service.schemadatawriter",
+                "@service.schemaloader",
+                "@service.schemapopulator",
+                "@service.filewriter",
                 "@service.logger"
             ]
         },
-        "service.tsschemaloader": {
+        "service.schemaloader": {
             "file": "../src/SchemaLoader.js",
             "arguments": [
                 "%interfaceSourceDir%",
@@ -34,19 +34,26 @@
                 "%tsconfig%"
             ]
         },
-        "service.tsdatagenerator": {
-            "file": "../src/DataGenerator.js",
+        "service.schemapopulator": {
+            "file": "../src/SchemaPopulator.js",
             "arguments": [
                 "%fakerseed%"
             ]
         },
-        "service.schemadatawriter": {
-            "file": "../src/DataFileWriter.js"
+        "service.filewriter": {
+            "file": "../src/FileWriter.js"
         },
         "service.logger": {
             "file": "../src/Logger.js",
             "arguments": [
                 "%loglevel%"
+            ]
+        },
+         "controller.interfacepopulator": {
+            "file": "../src/InterfacePopulator.js",
+            "arguments": [
+                "@service.schemaloader",
+                "@service.schemapopulator"
             ]
         }
     }

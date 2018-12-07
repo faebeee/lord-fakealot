@@ -6,13 +6,22 @@
 It loads all interfaces from a given directory and can either expose an HTTP api or
 generate `json` files with mocked data in it
 
+[[ toc ]]
+
 ## Install
 `npm i -g lord-fakealot`
 This will then expose `fakealot` as a CLI entrypoint for this app
 
 ## Commands
 
-### Help
+|command | description |
+|---|---|
+|help | prints the help text|
+|api| exposes an HTTP API on a given port|
+|file| generate a file containing all populated interfaces|
+|files| generating a folder, containing JSON a json file for each interface |
+
+### `help`
 Prints the help info to the CLI
 
 ```bash
@@ -20,13 +29,21 @@ fakealot -h
 ```
 
 
-### Files Command
+### `files`
 This commands create a jsonfile for every interface found in the `dir` directory. The name of each file
 is the interfacename.
 
 ```bash
 fakealot files --out ./out --dir ./test --tsconfig ./tsconfig.json
 ```
+
+#### Options
+
+| Name | Type |Description |
+|---|---|---|
+|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+| --out | string | Folder where all files will be created |
+| --tsconfig | string | Path to the tsconfig file
 
 Create a directory `out` with files in it. 
 Each file then contains directly the interface data like this:
@@ -73,7 +90,7 @@ ___ComplexInterface.json___
 ```
 
 
-### File Command
+### `file`
 The `file` command will create a file, which stores a a collection with fake data for all interfaces found in the `dir`
 
 The command
@@ -81,6 +98,14 @@ The command
 ```bash
 fakealot file --file ./mock.json --dir ./interfaces --tsconfig ./tsconfig.json
 ```
+
+#### Options
+
+| Name | Type |Description |
+|---|---|---|
+|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+| --file | string | Path to file where the data will be dumped |
+| --tsconfig | string | Path to the tsconfig file
 
 will create a new file name `mock.json`
 
@@ -134,7 +159,7 @@ with the content
 }
 ```
 
-### HTTP Api
+### `api`
 This command creates a server which then can be accessed from you App. By passing the interface name to the route,
 data with the same structure as the interface is served.
 
@@ -142,6 +167,16 @@ data with the same structure as the interface is served.
     fakealot api --port 3000 --dir ./SRC --tsconfig ./tsconfig.json
 ```
 now by visting `http://localhost:3000/api/schema/{INTERFACENAME}` you'll get some mocked data.
+
+#### Options
+
+| Name | Type |Description |
+|---|---|---|
+|--dir| string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
+|--port| number | Port number
+|--tsconfig| string | Path to the tsconfig file
+
+
 
 __Interface__
 ```typescript

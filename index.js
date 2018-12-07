@@ -1,89 +1,24 @@
-#!/usr/bin/env node
+const boot = require('./boot');
 
-const yargs = require('yargs');
+/**
+ * Populate interface by given name
+ * @param {string} interfaceName
+ * @param {string} sourceDir
+ * @param {string} tsconfig
+ * @param {number} loglevel
+ * @return {Promise<void>}
+ */
+async function populateInterfaceByName(interfaceName, sourceDir, tsconfig, loglevel) {
+    const container = boot(sourceDir, tsconfig, loglevel);
 
-yargs.usage('$0 <cmd> [options]')
-    .command('api', 'Expose api to fetch fake data',
-        (_yargs) => {
-            _yargs.count('verbose');
-            _yargs.alias('v', 'verbose');
+    /** @type {InterfacePopulator} */
+    const interfacepopulator = container.get('service.interfacepopulator');
 
-            _yargs.positional('dir', {
-                type: 'path',
-                describe: 'Directory where all the interfaces are stores. lord-fakealot will fetch all .ts files recursively'
-            });
+    return await interfacepopulator.populate(interfaceName);
+};
 
-            _yargs.positional('port', {
-                type: 'number',
-                describe: 'Port for the api to be exposed on',
-            });
-
-            _yargs.positional('tsconfig', {
-                type: 'file',
-                describe: 'tsconfig.json path',
-            });
-        },
-        (argv) => {
-            require('./server')(argv.dir, argv.port, argv.tsconfig, argv.verbose);
-        }
-    )
-    .example('fakealot api --port 3000 --dir ./interfaces --tsconfig ./tsconfig.json')
-
-    .command('file', 'Generate single file with all interfaces',
-        (_yargs) => {
-            _yargs.count('verbose');
-            _yargs.alias('v', 'verbose');
-
-            _yargs.positional('dir', {
-                type: 'path',
-                describe: 'Directory where all the interfaces are stores. lord-fakealot will fetch all .ts files recursively'
-            });
-
-            _yargs.positional('file', {
-                type: 'file',
-                describe: 'Output file for populated data',
-            });
-
-            _yargs.positional('tsconfig', {
-                type: 'file',
-                describe: 'tsconfig.json path',
-            });
-        },
-        (argv) => {
-            require('./generator')(argv.dir, argv.tsconfig, null, argv.file, argv.verbose);
-        }
-    )
-    .example('fakealot file --file ./mock.json --dir ./interfaces --tsconfig ./tsconfig.json')
-
-    .command('files', 'Generate files with populated json datastructure',
-        (_yargs) => {
-            _yargs.count('verbose');
-            _yargs.alias('v', 'verbose');
-
-            _yargs.positional('dir', {
-                type: 'path',
-                describe: 'Directory where all the interfaces are stores. lord-fakealot will fetch all .ts files recursively'
-            });
-
-            _yargs.positional('out', {
-                type: 'folder',
-                describe: 'Output folder for populated data',
-            });
-
-            _yargs.positional('tsconfig', {
-                type: 'file',
-                describe: 'tsconfig.json path',
-            });
-        },
-        (argv) => {
-            require('./generator')(argv.dir, argv.out, null, argv.verbose);
-        }
-    )
-    .example('fakealot files --out ./mockData/ --dir ./interfaces --tsconfig ./tsconfig.json')
-
-    .help('h')
-    .demandCommand()
-    .alias('help', 'h')
-    .option('v', { description: 'Verbosity level' });
-
-yargs.help().argv;
+module.exports = {
+    populateInterface(interfaceName, sourceDir, tsconfig = null, loglevel = 0) {
+        populateInterfaceByName(interfaceName, sourceDir, tsconfig, loglevel)
+    }
+};

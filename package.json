@@ -12,9 +12,9 @@
         "api",
         "http"
     ],
-    "main": "server.js",
+    "main": "index.js",
     "bin": {
-        "fakealot": "index.js"
+        "fakealot": "cli.js"
     },
     "dependencies": {
         "eslint": "^5.9.0",

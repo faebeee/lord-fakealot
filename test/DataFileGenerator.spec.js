@@ -3,7 +3,7 @@ const { expect } = require('chai');
 
 const FileGenerator = require('../src/FileGenerator');
 const SchemaLoader = require('../src/SchemaLoader');
-const DataGenerator = require('../src/DataGenerator');
+const DataGenerator = require('../src/SchemaPopulator');
 const Logger = require('../src/Logger');
 
 const SOURCE = resolve('./test/interfaces');

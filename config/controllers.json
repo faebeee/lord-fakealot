@@ -3,8 +3,7 @@
         "controller.schema": {
             "file": "../src/api/SchemaController.js",
             "arguments": [
-                "@service.tsschemaloader",
-                "@service.tsdatagenerator"
+                "@service.schemapopulator"
             ]
         }
     }

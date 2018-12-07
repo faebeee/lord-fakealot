@@ -2,7 +2,7 @@ const { resolve } = require('path');
 const { expect } = require('chai');
 const assert = require('assert');
 
-const DataGenerator = require('../src/DataGenerator');
+const DataGenerator = require('../src/SchemaPopulator');
 const SchemaLoader = require('../src/SchemaLoader');
 const Logger = require('../src/Logger');
 

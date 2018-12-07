@@ -2,7 +2,7 @@ const { writeFile } = require('fs');
 const { mkdirp } = require('fs-extra');
 const { dirname, format, join } = require('path');
 
-class DataFileWriter {
+class FileWriter {
     /**
      * Write files
      * @param {string} folder destination folder
@@ -41,4 +41,4 @@ class DataFileWriter {
     }
 }
 
-module.exports = DataFileWriter;
+module.exports = FileWriter;

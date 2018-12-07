@@ -3,7 +3,7 @@ const { existsSync } = require('fs');
 const { expect } = require('chai');
 const generator = require('../generator');
 
-describe('Generator', function() {
+describe('CLI', function() {
     it('create files', async () => {
         await generator(resolve('test/interfaces'), null, resolve('test/out'), null);
         const exists = existsSync(resolve('test/out/ComplexInterface.json'));

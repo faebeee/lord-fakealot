@@ -1,7 +1,7 @@
 const faker = require('faker');
 const jsf = require('json-schema-faker');
 
-class DataGenerator {
+class SchemaPopulator {
     /**
      * DataGenerator
      * @param {number} fakerSeed
@@ -23,4 +23,4 @@ class DataGenerator {
     }
 }
 
-module.exports = DataGenerator;
+module.exports = SchemaPopulator;
