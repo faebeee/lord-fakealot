@@ -49,7 +49,7 @@
                 "%loglevel%"
             ]
         },
-         "controller.interfacepopulator": {
+         "service.interfacepopulator": {
             "file": "../src/InterfacePopulator.js",
             "arguments": [
                 "@service.schemaloader",

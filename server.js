@@ -8,6 +8,7 @@ module.exports = async function(sourceDir, port, tsconfig, logLevel) {
     });
     await container.get('service.server').start();
 
+    /** @type {SchemaController} */
     const schemaController = container.get('controller.schema');
 
     container.get('service.server').route({

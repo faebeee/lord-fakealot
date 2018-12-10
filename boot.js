@@ -12,6 +12,6 @@ module.exports = function(root, tsconfig, loglevel) {
     return ServiceContainer.default.create(__dirname + '/config/services.json', {
         interfaceSourceDir: resolve(root),
         loglevel,
-        tsconfig,
+        tsconfig: resolve(tsconfig),
     });
 };

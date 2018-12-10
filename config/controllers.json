@@ -3,7 +3,7 @@
         "controller.schema": {
             "file": "../src/api/SchemaController.js",
             "arguments": [
-                "@service.schemapopulator"
+                "@service.interfacepopulator"
             ]
         }
     }

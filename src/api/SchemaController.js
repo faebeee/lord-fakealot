@@ -17,6 +17,7 @@ class SchemaController {
         try {
             return await this.interfacePopulator.populate(req.params.interface);
         } catch (e) {
+            console.error(e);
             return e;
         }
     }
