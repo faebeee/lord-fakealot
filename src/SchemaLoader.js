@@ -78,7 +78,10 @@ class SchemaLoader {
             .then(() => {
                 this.logger.debug(`Building program`);
 
-                let compilerSettings = {};
+                let compilerSettings = {
+                    experimentalDecorators: true,
+                    emitDecoratorMetadata: false,
+                };
 
                 if (this.tsconfig) {
                     const tsconfigData = require(resolve(this.tsconfig));
