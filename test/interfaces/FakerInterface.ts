@@ -1,5 +1,4 @@
 export interface FakerInterface {
-    
     /**
      * @faker lorem.word
      */

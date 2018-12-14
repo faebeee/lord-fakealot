@@ -10,6 +10,32 @@ generate `json` files with mocked data in it
 `npm i -g lord-fakealot`
 This will then expose `fakealot` as a CLI entrypoint for this app
 
+## Data population
+Under the hood, `lord-fakealot` uses faker. You can use any [faker API Method](https://github.com/marak/Faker.js/#api-methods) 
+in your annotations by writing `@faker <api method>`.
+
+__Example__
+```typescript
+export interface FakerInterface {
+    /**
+     * @faker lorem.word
+     */
+    word: string;
+    
+    /**
+     * @faker lorem.paragraphs
+     */
+    paragraphs: string;
+    
+    /**
+     * @faker finance.amount
+     */
+    finance: string;
+    
+}
+```
+ 
+
 ## Commands
 
 |command | description |
@@ -32,16 +58,16 @@ This commands create a jsonfile for every interface found in the `dir` directory
 is the interfacename.
 
 ```bash
-fakealot files --out ./out --dir ./test --tsconfig ./tsconfig.json
+fakealot files --out ./out --dir ./test [--tsconfig ./tsconfig.json]
 ```
 
 #### Options
 
-| Name | Type |Description |
+| Name | Type | Description |
 |---|---|---|
 | --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
 | --out | string | Folder where all files will be created |
-| --tsconfig | string | Path to the tsconfig file
+| --tsconfig | string - optional | Path to the tsconfig file
 
 Create a directory `out` with files in it. 
 Each file then contains directly the interface data like this:
@@ -103,7 +129,7 @@ fakealot file --file ./mock.json --dir ./interfaces --tsconfig ./tsconfig.json
 |---|---|---|
 | --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
 | --file | string | Path to file where the data will be dumped |
-| --tsconfig | string | Path to the tsconfig file
+| --tsconfig | string - optional | Path to the tsconfig file
 
 will create a new file name `mock.json`
 
@@ -172,7 +198,7 @@ now by visting `http://localhost:3000/api/schema/{INTERFACENAME}` you'll get som
 |---|---|---|
 | --dir | string | Directory path where all the interfaces are stored in. Dir will be searched recursive|
 | --port | number | Port number
-| --tsconfig | string | Path to the tsconfig file
+| --tsconfig | string - optional | Path to the tsconfig file
 
 
 
