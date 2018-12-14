@@ -12,6 +12,10 @@
         "api",
         "http"
     ],
+    "repository": {
+        "type": "git",
+        "url": "https://www.npmjs.com/package/lord-fakealot".
+    },
     "main": "index.js",
     "bin": {
         "fakealot": "cli.js"
@@ -43,6 +47,9 @@
     "engines": {
         "node": ">=10"
     },
-    "author": "faebeee",
+    "author": {
+        "email": "faebeee@gmail.com",
+        "name": "Faebeee"
+    },
     "license": "ISC"
 }
